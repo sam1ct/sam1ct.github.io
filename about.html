@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Samuel Huron</title>
+<meta name="description" content="About Samuel Huron, an undergraduate student at UT Austin studying Humanities and Sociology.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<style>
+    /* ============ BASE ============ */
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background-color: #fcfbf9;
+        color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============ HEADER / NAV ============ */
+    .site-header { border-bottom: 1px solid #eaeaea; }
+    .site-header .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.75rem 0;
+    }
+    .brand {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #1a1a1a;
+    }
+    .brand span {
+        display: block;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #666;
+        margin-top: 4px;
+        font-weight: 400;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+    }
+    .nav-links a {
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+    .nav-links a[aria-current="page"] { color: #8a7355; }
+    .nav-toggle { display: none; }
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .nav-toggle {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #1a1a1a;
+            margin: 5px 0;
+        }
+    }
+
+    /* ============ PAGE HERO (simple header banner) ============ */
+    .page-hero { padding: 4rem 0 3rem 0; }
+    .eyebrow {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #8a7355;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        line-height: 1.1;
+        margin: 0 0 1.25rem 0;
+    }
+    .lede { font-size: 1.2rem; color: #444; max-width: 700px; }
+
+    /* ============ SECTIONS ============ */
+    .section { padding: 4.5rem 0; }
+    .section--paper { background-color: #f5f3ef; }
+    .section--tight { padding: 3rem 0; }
+    .section--dark { background-color: #1f2620; color: #f5f1e8; }
+    .section--dark .eyebrow { color: #c9b896; }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin: 0 0 1.25rem 0;
+        line-height: 1.2;
+    }
+    h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        margin: 0 0 0.5rem 0;
+    }
+    .muted { color: #444; margin-bottom: 1.25rem; }
+    .section-head { margin-bottom: 2.5rem; }
+    .section-head p:not(.eyebrow) { color: #555; }
+
+    /* ============ SPLIT LAYOUTS ============ */
+    .split {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 3.5rem;
+        align-items: center;
+    }
+    .split--wide-right { grid-template-columns: 0.8fr 1.2fr; }
+    @media (max-width: 768px) {
+        .split, .split--wide-right { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .photo-box {
+        background-color: #e0dbd5;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        font-style: italic;
+        text-align: center;
+        padding: 1rem;
+    }
+    .figure { margin: 0; }
+    .figure img { border-radius: 6px; }
+    .figure figcaption {
+        font-size: 0.85rem;
+        color: #888;
+        margin-top: 0.6rem;
+        font-style: italic;
+    }
+
+    /* ============ CHIPS ============ */
+    .chips {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .chips li {
+        background-color: #e0dbd5;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    /* ============ RECORDS (timeline list) ============ */
+    .records { list-style: none; padding: 0; margin: 0; }
+    .records li {
+        display: grid;
+        grid-template-columns: 0.28fr 1.72fr;
+        gap: 2rem;
+        padding: 2rem 0;
+        border-top: 1px solid #e0dbd5;
+    }
+    .records li:first-child { border-top: none; }
+    .records__when { font-weight: 600; color: #8a7355; font-size: 0.95rem; }
+    .records p { margin: 0; color: #444; }
+    @media (max-width: 700px) {
+        .records li { grid-template-columns: 1fr; gap: 0.4rem; }
+    }
+
+    /* ============ PHOTO GRID ============ */
+    .grid--3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+    }
+    @media (max-width: 800px) {
+        .grid--3 { grid-template-columns: 1fr; }
+    }
+
+    /* ============ NUMBERED POINTS (why this matters) ============ */
+    .points { list-style: none; padding: 0; margin: 0; }
+    .point {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 1.5rem;
+        padding: 1.75rem 0;
+        border-top: 1px solid rgba(245,241,232,.2);
+    }
+    .point:first-child { border-top: none; }
+    .point__num {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        color: #c9b896;
+    }
+    .point h3 { color: #f5f1e8; margin-bottom: 0.5rem; }
+    .point p { margin: 0; color: rgba(245,241,232,.8); }
+    @media (max-width: 600px) {
+        .point { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.8rem 1.8rem;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 1px solid transparent;
+    }
+    .btn--sm { padding: 0.6rem 1.3rem; font-size: 0.88rem; }
+    .btn--ghost { border-color: #1a1a1a; color: #1a1a1a; }
+    .btn--light { background-color: #fff; color: #1a1a1a; }
+    .btn--outline-light { border: 1px solid rgba(255,255,255,.5); color: #fff; }
+
+    /* ============ CTA ============ */
+    .cta {
+        background-color: #1a1a1a;
+        color: #fff;
+        padding: 4.5rem 0;
+        text-align: center;
+    }
+    .cta h2 { color: #fff; }
+    .cta p { color: rgba(255,255,255,.75); max-width: 500px; margin: 0 auto 2rem auto; }
+    .cta__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ============ FOOTER ============ */
+    .site-footer { background-color: #f5f3ef; padding: 3.5rem 0 2rem 0; }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-grid h4 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.05rem;
+        margin: 0 0 0.75rem 0;
+    }
+    .footer-grid .small { font-size: 0.9rem; color: #555; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
+    .footer-grid ul li { margin-bottom: 0.5rem; }
+    .footer-grid ul a { text-decoration: none; font-size: 0.92rem; color: #333; }
+    .footer-bottom {
+        border-top: 1px solid #e0dbd5;
+        padding-top: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        color: #777;
+    }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; gap: 0.4rem; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a class="brand" href="index.html">Samuel Huron<span>Humanities &amp; Sociology</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" aria-current="page">About</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" type="button" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero">
+        <div class="wrap">
+            <p class="eyebrow">About</p>
+            <h1>[A one-line headline about who you are]</h1>
+            <p class="lede">[Two sentences setting up your "two halves" — the classroom side and the outside-of-class side, and how they connect. e.g. "I study X at UT Austin and spend the rest of my week doing Y. The two aren't separate — they're the same question asked two different ways."]</p>
+        </div>
+    </section>
+
+    <!-- ============ WHO I AM ============ -->
+    <section class="section">
+        <div class="wrap split">
+            <div>
+                <p class="eyebrow">Who I am</p>
+                <h2>[Your program, e.g. Humanities & Sociology, UT Austin]</h2>
+                <p class="muted">[Paragraph 1 — your major, expected graduation, and what question or theme ties your coursework together. What's the "guiding question" behind your degree, the way Gabriel frames his around food?]</p>
+                <p class="muted">[Paragraph 2 — GPA, honors, awards, notable recognitions, thesis or capstone topic and advisor if applicable.]</p>
+                <ul class="chips" style="margin-top:1.5rem">
+                    <li>[Degree, expected year]</li>
+                    <li>[GPA or honor]</li>
+                    <li>[Award or distinction]</li>
+                    <li>[Thesis / capstone timing]</li>
+                </ul>
+            </div>
+            <figure class="figure">
+                <div class="photo-box" style="aspect-ratio: 3/4;">[ Portrait image placeholder ]</div>
+                <figcaption>[Caption — your name, location]</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ WHAT I'M DOING ============ -->
+    <section class="section section--paper">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">What I'm doing</p>
+                <h2>Places and communities</h2>
+                <p>[A short line introducing the list below — the orgs, jobs, and communities that make up your time outside class.]</p>
+            </div>
+
+            <ul class="records">
+                <li>
+                    <span class="records__when">[2024 — present]</span>
+                    <div>
+                        <h3>[Organization or role #1]</h3>
+                        <p>[What it is, what you do there, and why it matters to you. One solid paragraph, like Gabriel's Casa de Luz entry.]</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="records__when">[Dates]</span>
+                    <div>
+                        <h3>[Organization or role #2]</h3>
+                        <p>[Same structure — what it is, your role, why it's part of the story.]</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="records__when">[Dates]</span>
+                    <div>
+                        <h3>[Organization or role #3]</h3>
+                        <p>[Same structure.]</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="records__when">[Current]</span>
+                    <div>
+                        <h3>[Internship, job, or current commitment]</h3>
+                        <p>[What it is and what you're responsible for.]</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ COMMUNITY PHOTOS ============ -->
+    <section class="section section--tight">
+        <div class="wrap grid grid--3">
+            <figure class="figure">
+                <div class="photo-box" style="aspect-ratio: 4/3;">[ Photo 1 ]</div>
+                <figcaption>[Caption for photo 1]</figcaption>
+            </figure>
+            <figure class="figure">
+                <div class="photo-box" style="aspect-ratio: 4/3;">[ Photo 2 ]</div>
+                <figcaption>[Caption for photo 2]</figcaption>
+            </figure>
+            <figure class="figure">
+                <div class="photo-box" style="aspect-ratio: 4/3;">[ Photo 3 ]</div>
+                <figcaption>[Caption for photo 3]</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ WHY THIS MATTERS (numbered argument) ============ -->
+    <section class="section section--dark">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Why this matters</p>
+                <h2>[The argument, in a few moves]</h2>
+            </div>
+            <ol class="points">
+                <li class="point">
+                    <span class="point__num">1</span>
+                    <div>
+                        <h3>[The problem, stated plainly]</h3>
+                        <p>[What's broken or overlooked in your field — stated as a fact, not an opinion, the way Gabriel opens with the statistic on hunger and diet-related disease.]</p>
+                    </div>
+                </li>
+                <li class="point">
+                    <span class="point__num">2</span>
+                    <div>
+                        <h3>[A better way already exists]</h3>
+                        <p>[What alternative, model, or approach you believe in and why it's not just theoretical.]</p>
+                    </div>
+                </li>
+                <li class="point">
+                    <span class="point__num">3</span>
+                    <div>
+                        <h3>[What's actually in the way]</h3>
+                        <p>[The real barrier — often institutional, structural, or cultural rather than technical.]</p>
+                    </div>
+                </li>
+                <li class="point">
+                    <span class="point__num">4</span>
+                    <div>
+                        <h3>[So here's what I'm doing about it]</h3>
+                        <p>[How your specific work — thesis, project, role — is a response to that barrier.]</p>
+                    </div>
+                </li>
+            </ol>
+            <p style="margin-top:2.5rem">
+                <a class="btn btn--light" href="work.html">See how this shows up in my work</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ BACKGROUND ============ -->
+    <section class="section">
+        <div class="wrap split split--wide-right">
+            <figure class="figure">
+                <div class="photo-box" style="aspect-ratio: 4/3;">[ Photo placeholder ]</div>
+                <figcaption>[Caption — a hobby, trip, or personal moment]</figcaption>
+            </figure>
+            <div>
+                <p class="eyebrow">Background</p>
+                <h2>The rest of it</h2>
+                <p class="muted">[Paragraph on where you came from before UT — prior school, program, any notable achievement or leadership moment there.]</p>
+                <p class="muted">[Paragraph on a personal interest, hobby, or skill you've kept up for a long time — music, sports, art, whatever's genuinely true.]</p>
+                <p class="muted">[Optional third paragraph — anything else personal that rounds you out as a person, not just a résumé.]</p>
+                <ul class="chips" style="margin-top:1.5rem">
+                    <li>[Interest/skill 1]</li>
+                    <li>[Interest/skill 2]</li>
+                    <li>[Interest/skill 3]</li>
+                    <li>[Interest/skill 4]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta">
+        <div class="wrap">
+            <h2>Want the short version on paper?</h2>
+            <p>[A line about your résumé being available, or however you want to close the page.]</p>
+            <div class="cta__actions">
+                <a class="btn btn--light" href="#" target="_blank" rel="noopener">Download résumé (PDF)</a>
+                <a class="btn btn--outline-light" href="contact.html">Get in touch</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div>
+                <h4>Samuel Huron</h4>
+                <p class="small">Undergraduate student at UT Austin studying Humanities and Sociology.</p>
+            </div>
+            <div>
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:you@example.com">you@example.com</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Samuel Huron</span>
+            <span>Austin, Texas</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samuel Huron — Portfolio</title>
+<meta name="description" content="Samuel Huron is an undergraduate student at UT Austin studying Humanities and Sociology.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<style>
+    /* ============ BASE ============ */
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background-color: #fcfbf9;
+        color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============ HEADER / NAV ============ */
+    .site-header {
+        border-bottom: 1px solid #eaeaea;
+    }
+    .site-header .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.75rem 0;
+    }
+    .brand {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #1a1a1a;
+    }
+    .brand span {
+        display: block;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #666;
+        margin-top: 4px;
+        font-weight: 400;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+    }
+    .nav-links a {
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+    .nav-toggle { display: none; }
+
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .nav-toggle {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #1a1a1a;
+            margin: 5px 0;
+        }
+    }
+
+    /* ============ HERO ============ */
+    .hero { padding: 4.5rem 0; }
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 3.5rem;
+        align-items: center;
+    }
+    @media (max-width: 768px) {
+        .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .hero { padding: 2.5rem 0; }
+    }
+    .eyebrow {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #8a7355;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.25rem;
+        line-height: 1.1;
+        margin: 0 0 1.5rem 0;
+    }
+    .lede {
+        font-size: 1.2rem;
+        color: #444;
+        margin-bottom: 2rem;
+    }
+    .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn {
+        display: inline-block;
+        padding: 0.8rem 1.8rem;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 1px solid transparent;
+    }
+    .btn--solid { background-color: #1a1a1a; color: #fff; }
+    .btn--ghost { border-color: #1a1a1a; color: #1a1a1a; }
+    .btn--sm { padding: 0.6rem 1.3rem; font-size: 0.88rem; }
+    .hero-meta {
+        list-style: none;
+        padding: 1.5rem 0 0 0;
+        margin: 0;
+        border-top: 1px solid #eaeaea;
+    }
+    .hero-meta li { margin-bottom: 0.6rem; font-size: 0.95rem; color: #333; }
+    .hero-meta b { display: inline-block; min-width: 100px; color: #8a7355; font-weight: 600; }
+
+    .photo-box {
+        background-color: #e0dbd5;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        font-style: italic;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    /* ============ SECTIONS ============ */
+    .section { padding: 4.5rem 0; }
+    .section--paper { background-color: #f5f3ef; }
+    .section--dark {
+        background-color: #1f2620;
+        color: #f5f1e8;
+    }
+    .section--dark .eyebrow { color: #c9b896; }
+
+    /* ============ PATHWAYS (3-card grid) ============ */
+    .pathways {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+        .pathways { grid-template-columns: 1fr; }
+    }
+    .pathway {
+        text-decoration: none;
+        color: #1a1a1a;
+        background: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 6px;
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 180px;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .pathway:hover { border-color: #8a7355; transform: translateY(-2px); }
+    .pathway h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        margin: 0 0 0.6rem 0;
+    }
+    .pathway p { font-size: 0.95rem; color: #555; margin: 0; }
+    .pathway__arrow {
+        display: block;
+        margin-top: 1.2rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #8a7355;
+    }
+
+    /* ============ SPLIT SECTIONS ============ */
+    .split {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 3.5rem;
+        align-items: center;
+    }
+    .split--wide-right { grid-template-columns: 0.8fr 1.2fr; }
+    @media (max-width: 768px) {
+        .split, .split--wide-right { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.1rem;
+        margin: 0 0 1.25rem 0;
+        line-height: 1.2;
+    }
+    .muted { color: #444; margin-bottom: 1.25rem; }
+    .figure { margin: 0; }
+    .figure img { border-radius: 6px; }
+    .figure figcaption {
+        font-size: 0.85rem;
+        color: #888;
+        margin-top: 0.6rem;
+        font-style: italic;
+    }
+
+    /* ============ THREE THINGS / STEPS ============ */
+    .section-head { margin-bottom: 2.5rem; }
+    .steps {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.75rem;
+        counter-reset: step-counter;
+    }
+    @media (max-width: 900px) {
+        .steps { grid-template-columns: 1fr; }
+    }
+    .steps li {
+        border-top: 1px solid rgba(245,241,232,.25);
+        padding-top: 1.25rem;
+    }
+    .section--dark .steps li { border-top-color: rgba(245,241,232,.25); }
+    .steps h4 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        margin: 0 0 0.5rem 0;
+    }
+    .steps p { font-size: 0.95rem; margin: 0; opacity: 0.85; }
+
+    /* ============ CTA ============ */
+    .cta {
+        background-color: #1a1a1a;
+        color: #fff;
+        padding: 4.5rem 0;
+        text-align: center;
+    }
+    .cta h2 { color: #fff; }
+    .cta p { color: rgba(255,255,255,.75); max-width: 550px; margin: 0 auto 2rem auto; }
+    .cta__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn--light { background-color: #fff; color: #1a1a1a; }
+    .btn--outline-light { border: 1px solid rgba(255,255,255,.5); color: #fff; }
+
+    /* ============ FOOTER ============ */
+    .site-footer {
+        background-color: #f5f3ef;
+        padding: 3.5rem 0 2rem 0;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+        .footer-grid { grid-template-columns: 1fr; }
+    }
+    .footer-grid h4 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.05rem;
+        margin: 0 0 0.75rem 0;
+    }
+    .footer-grid .small { font-size: 0.9rem; color: #555; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
+    .footer-grid ul li { margin-bottom: 0.5rem; }
+    .footer-grid ul a { text-decoration: none; font-size: 0.92rem; color: #333; }
+    .footer-bottom {
+        border-top: 1px solid #e0dbd5;
+        padding-top: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        color: #777;
+    }
+    @media (max-width: 480px) {
+        .footer-bottom { flex-direction: column; gap: 0.4rem; }
+    }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a class="brand" href="index.html">Samuel Huron<span>Humanities &amp; Sociology</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" type="button" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+        <div class="wrap hero-grid">
+            <div>
+                <p class="eyebrow">Undergraduate Student · University of Texas at Austin</p>
+                <h1>Samuel Huron</h1>
+                <p class="lede">I study <strong>[your focus — e.g. how social structures shape everyday life]</strong>, and spend my time outside class working on [a project, org, or role you want to highlight here].</p>
+                <div class="hero-actions">
+                    <a class="btn btn--solid" href="about.html">More about me</a>
+                    <a class="btn btn--ghost" href="work.html">My work</a>
+                </div>
+                <ul class="hero-meta">
+                    <li><b>Studying</b>[Your degree / major — e.g. B.A. Sociology, Class of 20XX]</li>
+                    <li><b>Researching</b>[A project, thesis, or topic you're working on]</li>
+                    <li><b>Building</b>[An org, club, or project you're part of]</li>
+                </ul>
+            </div>
+            <div class="photo-box">
+                [ Your Portrait Image Goes Here ]
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PATHWAYS ============ -->
+    <section class="section section--paper">
+        <div class="wrap">
+            <div class="pathways">
+                <a class="pathway" href="about.html">
+                    <div>
+                        <h3>Who I am</h3>
+                        <p>A short line about your background, interests, or the question that drives your work — the kind of thing you'd want someone to know before anything else.</p>
+                    </div>
+                    <span class="pathway__arrow">Learn more →</span>
+                </a>
+                <a class="pathway" href="work.html">
+                    <div>
+                        <h3>What I'm working on</h3>
+                        <p>Projects, coursework, internships, or organizations you're currently putting time into.</p>
+                    </div>
+                    <span class="pathway__arrow">See the work →</span>
+                </a>
+                <a class="pathway" href="contact.html">
+                    <div>
+                        <h3>Get in touch</h3>
+                        <p>How people can reach you — email, LinkedIn, or whatever you'd like to share.</p>
+                    </div>
+                    <span class="pathway__arrow">Contact me →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ POSITION / INTRO SPLIT ============ -->
+    <section class="section">
+        <div class="wrap split">
+            <div>
+                <p class="eyebrow">A bit about my approach</p>
+                <h2>[A headline about how you approach your field]</h2>
+                <p class="muted">[Write one or two sentences about how you engage with your subject — hands-on, research-based, community-focused, whatever's true for you.]</p>
+                <p class="muted">[A second paragraph — what's missing in your field, what you're trying to build, or what makes your perspective different.]</p>
+                <p><a class="btn btn--ghost btn--sm" href="about.html">More about my roles →</a></p>
+            </div>
+            <figure class="figure">
+                <div class="photo-box" style="aspect-ratio: 4/3;">[ Image placeholder ]</div>
+                <figcaption>[Caption for this image]</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ HIGHLIGHT / SPOTLIGHT (DARK SECTION) ============ -->
+    <section class="section section--dark">
+        <div class="wrap split split--wide-right">
+            <div>
+                <p class="eyebrow">[Organization or project name]</p>
+                <h2>[A one-line description of this project]</h2>
+                <p style="color:rgba(245,241,232,.82)">[A couple sentences about what this project is, your role in it, and why it matters to you.]</p>
+                <p><a class="btn btn--outline-light btn--sm" href="work.html">See more of my work →</a></p>
+            </div>
+            <figure class="figure">
+                <div class="photo-box" style="aspect-ratio: 4/3; background-color:#3a4238; color:#f5f1e8;">[ Image placeholder ]</div>
+                <figcaption style="color:rgba(245,241,232,.6)">[Caption for this image]</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============ THREE THINGS ON MY DESK ============ -->
+    <section class="section section--paper">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Right now</p>
+                <h2>Three things I'm focused on</h2>
+            </div>
+            <ol class="steps" style="border-top:1px solid #e0dbd5; padding-top:0.5rem;">
+                <li style="border-top-color:#e0dbd5;">
+                    <h4>[Focus area #1]</h4>
+                    <p>[What it is and where it stands right now.]</p>
+                </li>
+                <li style="border-top-color:#e0dbd5;">
+                    <h4>[Focus area #2]</h4>
+                    <p>[What it is and where it stands right now.]</p>
+                </li>
+                <li style="border-top-color:#e0dbd5;">
+                    <h4>[Focus area #3]</h4>
+                    <p>[What it is and where it stands right now.]</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta">
+        <div class="wrap">
+            <h2>[A closing line inviting people to reach out]</h2>
+            <p>[A sentence about who you'd like to hear from — recruiters, collaborators, classmates, whoever fits.]</p>
+            <div class="cta__actions">
+                <a class="btn btn--light" href="contact.html">Get in touch</a>
+                <a class="btn btn--outline-light" href="#" target="_blank" rel="noopener">Download résumé (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div>
+                <h4>Samuel Huron</h4>
+                <p class="small">Undergraduate student at UT Austin studying Humanities and Sociology.</p>
+            </div>
+            <div>
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:you@example.com">you@example.com</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Samuel Huron</span>
+            <span>Austin, Texas</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

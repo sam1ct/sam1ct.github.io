@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Samuel Huron</title>
+<meta name="description" content="Get in touch with Samuel Huron.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<style>
+    /* ============ BASE ============ */
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background-color: #fcfbf9;
+        color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============ HEADER / NAV ============ */
+    .site-header { border-bottom: 1px solid #eaeaea; }
+    .site-header .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.75rem 0;
+    }
+    .brand {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #1a1a1a;
+    }
+    .brand span {
+        display: block;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #666;
+        margin-top: 4px;
+        font-weight: 400;
+    }
+    .nav-links { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    .nav-links a { text-decoration: none; font-size: 0.95rem; font-weight: 600; }
+    .nav-links a[aria-current="page"] { color: #8a7355; }
+    .nav-toggle { display: none; }
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .nav-toggle { display: block; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-toggle span { display: block; width: 22px; height: 2px; background: #1a1a1a; margin: 5px 0; }
+    }
+
+    /* ============ PAGE HERO ============ */
+    .page-hero { padding: 4rem 0 3rem 0; }
+    .eyebrow {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #8a7355;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    h1 { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1.1; margin: 0 0 1.25rem 0; }
+    .lede { font-size: 1.2rem; color: #444; max-width: 700px; }
+
+    /* ============ SECTIONS ============ */
+    .section { padding: 4.5rem 0; }
+    .section--dark { background-color: #1f2620; color: #f5f1e8; }
+    .section--dark .eyebrow { color: #c9b896; }
+    .section-head { margin-bottom: 2.25rem; max-width: 700px; }
+    .section-head p:not(.eyebrow) { color: #555; }
+    .section--dark .section-head p:not(.eyebrow) { color: rgba(245,241,232,.75); }
+
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; margin: 0 0 1.25rem 0; line-height: 1.25; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 0 0 0.6rem 0; }
+    .muted { color: #444; margin-bottom: 1.25rem; }
+    .small { font-size: 0.9rem; }
+
+    /* ============ SPLIT ============ */
+    .split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: start; }
+    @media (max-width: 768px) { .split { grid-template-columns: 1fr; gap: 2rem; } }
+
+    /* ============ CONTACT LINES ============ */
+    .contact-lines { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+    .contact-lines a { text-decoration: none; font-weight: 600; }
+    .contact-lines a:hover { color: #8a7355; }
+    .contact-lines .label {
+        display: block;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #999;
+        margin-bottom: 0.2rem;
+        font-weight: 400;
+    }
+    .rule { border: none; border-top: 1px solid #eaeaea; }
+
+    /* ============ CARD / FORM ============ */
+    .card {
+        background: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 6px;
+        padding: 1.75rem;
+    }
+    .form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field label { font-size: 0.85rem; font-weight: 600; color: #333; }
+    .field input,
+    .field select,
+    .field textarea {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.95rem;
+        padding: 0.7rem 0.9rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background: #fcfbf9;
+        color: #1a1a1a;
+    }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus { outline: 2px solid #8a7355; outline-offset: 1px; }
+    .btn {
+        display: inline-block;
+        padding: 0.8rem 1.8rem;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+    }
+    .btn--solid { background-color: #1a1a1a; color: #fff; }
+    .btn--light { background-color: #fff; color: #1a1a1a; }
+    .btn--outline-light { border: 1px solid rgba(255,255,255,.5); color: #fff; }
+    .form__note { font-size: 0.85rem; color: #8a7355; min-height: 1.2em; margin: 0; }
+
+    /* ============ WHO SHOULD REACH OUT (grid of cards) ============ */
+    .grid--3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 800px) { .grid--3 { grid-template-columns: 1fr; } }
+    .card--dark {
+        background: rgba(255,255,255,.05);
+        border: 1px solid rgba(245,241,232,.18);
+        border-radius: 6px;
+        padding: 1.75rem;
+    }
+    .card--dark h3 { color: #f5f1e8; }
+    .card--dark p { color: rgba(245,241,232,.8); margin: 0; }
+
+    /* ============ QUOTE BAND ============ */
+    .quote-band {
+        padding: 3.5rem 0;
+        text-align: center;
+        background-color: #f5f3ef;
+    }
+    .quote-band blockquote {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-style: italic;
+        margin: 0 0 0.75rem 0;
+        color: #333;
+    }
+    .quote-band cite { font-size: 0.9rem; color: #8a7355; }
+
+    /* ============ FOOTER ============ */
+    .site-footer { background-color: #f5f3ef; padding: 3.5rem 0 2rem 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-grid h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin: 0 0 0.75rem 0; }
+    .footer-grid .small { font-size: 0.9rem; color: #555; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
+    .footer-grid ul li { margin-bottom: 0.5rem; }
+    .footer-grid ul a { text-decoration: none; font-size: 0.92rem; color: #333; }
+    .footer-bottom {
+        border-top: 1px solid #e0dbd5;
+        padding-top: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        color: #777;
+    }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; gap: 0.4rem; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a class="brand" href="index.html">Samuel Huron<span>Humanities &amp; Sociology</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" type="button" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero">
+        <div class="wrap">
+            <p class="eyebrow">Contact</p>
+            <h1>Let's talk.</h1>
+            <p class="lede">[A sentence inviting the right kind of message — what you're open to hearing about, e.g. research, collaboration, opportunities, or just questions about your work.]</p>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT + FORM ============ -->
+    <section class="section">
+        <div class="wrap split">
+
+            <div>
+                <h2>Direct contact</h2>
+                <ul class="contact-lines" style="margin-top:1.5rem">
+                    <li>
+                        <span class="label">Email</span>
+                        <a href="mailto:you@example.com">you@example.com</a>
+                    </li>
+                    <li>
+                        <span class="label">LinkedIn</span>
+                        <a href="#" target="_blank" rel="noopener">linkedin.com/in/[your-handle] ↗</a>
+                    </li>
+                    <li>
+                        <span class="label">Résumé</span>
+                        <a href="#" target="_blank" rel="noopener">Download PDF ↗</a>
+                    </li>
+                </ul>
+
+                <hr class="rule" style="margin-block:2.5rem">
+
+                <h2>Where to find me</h2>
+                <ul class="contact-lines" style="margin-top:1.5rem">
+                    <li>
+                        <span class="label">[Organization or place #1]</span>
+                        [Address or location, if relevant]<br>
+                        <span class="small muted">[A short line about what this place is.]</span>
+                    </li>
+                    <li>
+                        <span class="label">UT Austin</span>
+                        [Your department / program]
+                    </li>
+                    <li>
+                        <span class="label">[Organization or place #2]</span>
+                        [What it is and your role there.]
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="card">
+                    <h2 style="font-size:clamp(1.5rem,3.4vw,2rem)">Send a message</h2>
+                    <p class="muted small">Fill this in and it will open your email app with the message ready to send. Prefer to write directly? <a href="mailto:you@example.com">you@example.com</a>.</p>
+
+                    <form class="form" id="inquiry-form" style="margin-top:1.5rem" novalidate>
+                        <div class="field">
+                            <label for="f-name">Your name</label>
+                            <input type="text" id="f-name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="f-email">Your email</label>
+                            <input type="email" id="f-email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="f-topic">What's this about?</label>
+                            <select id="f-topic" name="topic">
+                                <option>[Topic 1 — e.g. Research collaboration]</option>
+                                <option>[Topic 2 — e.g. Opportunities]</option>
+                                <option>[Topic 3 — e.g. Speaking or events]</option>
+                                <option>Something else</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="f-message">Message</label>
+                            <textarea id="f-message" name="message" required></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn--solid" type="submit">Compose email</button>
+                        </div>
+                        <p class="form__note" id="form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ WHO SHOULD REACH OUT ============ -->
+    <section class="section section--dark">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Especially glad to hear from</p>
+                <h2>[A short headline for the kinds of people you want to hear from]</h2>
+            </div>
+            <div class="grid--3">
+                <article class="card--dark">
+                    <h3>[Group 1 — e.g. Fellow students]</h3>
+                    <p>[Why you'd want to hear from this group and what you're hoping to talk about with them.]</p>
+                </article>
+                <article class="card--dark">
+                    <h3>[Group 2 — e.g. Recruiters / employers]</h3>
+                    <p>[What kind of roles or conversations you're open to.]</p>
+                </article>
+                <article class="card--dark">
+                    <h3>[Group 3 — e.g. Collaborators]</h3>
+                    <p>[What kind of projects or partnerships interest you.]</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ QUOTE (OPTIONAL) ============ -->
+    <section class="quote-band">
+        <div class="wrap">
+            <blockquote>"[A quote that means something to you — or delete this whole section if it's not your thing.]"</blockquote>
+            <cite>[Attribution]</cite>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div>
+                <h4>Samuel Huron</h4>
+                <p class="small">Undergraduate student at UT Austin studying Humanities and Sociology.</p>
+            </div>
+            <div>
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="work.html">Work</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:you@example.com">you@example.com</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Samuel Huron</span>
+            <span>Austin, Texas</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Turns the contact form into a pre-filled email draft (no backend needed).
+    document.getElementById('inquiry-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('f-name').value;
+        var email = document.getElementById('f-email').value;
+        var topic = document.getElementById('f-topic').value;
+        var message = document.getElementById('f-message').value;
+
+        var subject = encodeURIComponent('[' + topic + '] Message from ' + name);
+        var body = encodeURIComponent(
+            message + '\n\n---\nFrom: ' + name + ' (' + email + ')'
+        );
+
+        window.location.href = 'mailto:you@example.com?subject=' + subject + '&body=' + body;
+
+        var status = document.getElementById('form-status');
+        status.textContent = 'Opening your email app…';
+    });
+</script>
+
+</body>
+</html>

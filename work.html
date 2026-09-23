@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — Samuel Huron</title>
+<meta name="description" content="Samuel Huron's academic and project work at UT Austin.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<style>
+    /* ============ BASE ============ */
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background-color: #fcfbf9;
+        color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============ HEADER / NAV ============ */
+    .site-header { border-bottom: 1px solid #eaeaea; }
+    .site-header .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.75rem 0;
+    }
+    .brand {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #1a1a1a;
+    }
+    .brand span {
+        display: block;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #666;
+        margin-top: 4px;
+        font-weight: 400;
+    }
+    .nav-links { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    .nav-links a { text-decoration: none; font-size: 0.95rem; font-weight: 600; }
+    .nav-links a[aria-current="page"] { color: #8a7355; }
+    .nav-toggle { display: none; }
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .nav-toggle { display: block; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-toggle span { display: block; width: 22px; height: 2px; background: #1a1a1a; margin: 5px 0; }
+    }
+
+    /* ============ PAGE HERO ============ */
+    .page-hero { padding: 4rem 0 3rem 0; }
+    .eyebrow {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #8a7355;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.75rem; line-height: 1.15; margin: 0 0 1.25rem 0; }
+    .lede { font-size: 1.2rem; color: #444; max-width: 720px; }
+
+    /* ============ SECTIONS ============ */
+    .section { padding: 4.5rem 0; }
+    .section--paper { background-color: #f5f3ef; }
+    .section--dark { background-color: #1f2620; color: #f5f1e8; }
+    .section--dark .eyebrow { color: #c9b896; }
+    .section--dark h3 { color: #f5f1e8; }
+    .section--dark .muted { color: rgba(245,241,232,.82); }
+
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; margin: 0 0 1.25rem 0; line-height: 1.25; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 0 0 0.5rem 0; }
+    h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin: 0 0 0.5rem 0; }
+    .muted { color: #444; margin-bottom: 1.25rem; }
+    .section-head { margin-bottom: 2.25rem; max-width: 700px; }
+    .section-head p:not(.eyebrow) { color: #555; }
+
+    /* ============ SPLIT LAYOUT + SIDEBAR CARD ============ */
+    .split {
+        display: grid;
+        grid-template-columns: 1.4fr 0.6fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    @media (max-width: 768px) { .split { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .card {
+        background: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 6px;
+        padding: 1.75rem;
+    }
+    .card__label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #8a7355;
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+    }
+    .contact-lines { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+    .contact-lines .label {
+        display: block;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #999;
+        margin-bottom: 0.2rem;
+    }
+    .card__meta { font-size: 0.85rem; color: #888; margin: 1.25rem 0 0 0; }
+
+    /* ============ STEPS (numbered structure) ============ */
+    .steps { list-style: none; padding: 0; margin: 0; counter-reset: step-counter; }
+    .steps li {
+        padding: 1.25rem 0;
+        border-top: 1px solid #eaeaea;
+        counter-increment: step-counter;
+        position: relative;
+        padding-left: 2.5rem;
+    }
+    .steps li::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: 0;
+        top: 1.25rem;
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        color: #8a7355;
+    }
+    .steps li:first-child { border-top: none; }
+    .steps p { margin: 0; color: #444; }
+
+    /* ============ CHECKLIST (evidence bullets) ============ */
+    .checklist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+    .checklist li {
+        padding-left: 1.75rem;
+        position: relative;
+        color: rgba(245,241,232,.85);
+    }
+    .checklist li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #c9b896;
+        font-weight: 600;
+    }
+
+    /* ============ RECORDS (timeline list) ============ */
+    .records { list-style: none; padding: 0; margin: 0; }
+    .records li {
+        display: grid;
+        grid-template-columns: 0.28fr 1.72fr;
+        gap: 2rem;
+        padding: 2rem 0;
+        border-top: 1px solid #e0dbd5;
+    }
+    .records li:first-child { border-top: none; }
+    .records__when { font-weight: 600; color: #8a7355; font-size: 0.95rem; }
+    .records p { margin: 0; color: #444; }
+    @media (max-width: 700px) { .records li { grid-template-columns: 1fr; gap: 0.4rem; } }
+
+    .btn {
+        display: inline-block;
+        padding: 0.8rem 1.8rem;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 1px solid transparent;
+    }
+    .btn--light { background-color: #fff; color: #1a1a1a; }
+    .btn--outline-light { border: 1px solid rgba(255,255,255,.5); color: #fff; }
+
+    /* ============ CTA ============ */
+    .cta { background-color: #1a1a1a; color: #fff; padding: 4.5rem 0; text-align: center; }
+    .cta h2 { color: #fff; }
+    .cta p { color: rgba(255,255,255,.75); max-width: 500px; margin: 0 auto 2rem auto; }
+    .cta__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ============ FOOTER ============ */
+    .site-footer { background-color: #f5f3ef; padding: 3.5rem 0 2rem 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-grid h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin: 0 0 0.75rem 0; }
+    .footer-grid .small { font-size: 0.9rem; color: #555; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
+    .footer-grid ul li { margin-bottom: 0.5rem; }
+    .footer-grid ul a { text-decoration: none; font-size: 0.92rem; color: #333; }
+    .footer-bottom {
+        border-top: 1px solid #e0dbd5;
+        padding-top: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        color: #777;
+    }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; gap: 0.4rem; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap nav">
+        <a class="brand" href="index.html">Samuel Huron<span>Humanities &amp; Sociology</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="work.html" aria-current="page">Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" type="button" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero">
+        <div class="wrap">
+            <p class="eyebrow">Work</p>
+            <h1>[A one-line claim your work exists to test or prove]</h1>
+            <p class="lede">[A sentence framing what's below — a thesis or capstone, the fieldwork/evidence behind it, current coursework, and any honors or awards.]</p>
+        </div>
+    </section>
+
+    <!-- ============ THESIS / CAPSTONE ============ -->
+    <section class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">[Thesis / capstone / major project] · [in progress or completed]</p>
+                <h2>[Full title of your thesis, capstone, or flagship project]</h2>
+            </div>
+
+            <div class="split">
+                <div>
+                    <p class="muted"><strong>The argument.</strong> [State your central claim plainly, the way you'd state it to someone outside your field — one or two sentences, no jargon.]</p>
+                    <p class="muted"><strong>Who it's for.</strong> [Who benefits from this work or who it's written for — a gap in the field, an audience beyond academics, a real decision it could inform.]</p>
+                </div>
+                <aside class="card">
+                    <p class="card__label">At a glance</p>
+                    <ul class="contact-lines">
+                        <li><span class="label">Advisor</span>[Advisor name, department]</li>
+                        <li><span class="label">Programme</span>[Your program/honors track]</li>
+                        <li><span class="label">Expected completion</span>[Term / year]</li>
+                        <li><span class="label">Field</span>[Your discipline(s)]</li>
+                    </ul>
+                    <p class="card__meta">[Optional note — drafts available on request, etc.]</p>
+                </aside>
+            </div>
+
+            <div style="margin-top:clamp(2.5rem,6vw,4rem)">
+                <h3>Structure</h3>
+                <ol class="steps" style="margin-top:1.5rem">
+                    <li>
+                        <h4>[Section or chapter #1]</h4>
+                        <p>[What this part covers and what it establishes.]</p>
+                    </li>
+                    <li>
+                        <h4>[Section or chapter #2]</h4>
+                        <p>[What this part covers and what it establishes.]</p>
+                    </li>
+                    <li>
+                        <h4>[Section or chapter #3]</h4>
+                        <p>[What this part covers and what it establishes.]</p>
+                    </li>
+                    <li>
+                        <h4>[Section or chapter #4]</h4>
+                        <p>[What this part covers and what it establishes.]</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FIELD RESEARCH / EVIDENCE ============ -->
+    <section class="section section--dark">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">[Fieldwork / research / case study]</p>
+                <h2>[Title of this specific study or project]</h2>
+                <p class="muted">[A sentence or two on the method — what you looked at, where, and how, the way Gabriel describes surveying school staff and observing store environments.]</p>
+            </div>
+
+            <ul class="checklist">
+                <li><strong>[A striking number or finding.]</strong> [One sentence unpacking what it means.]</li>
+                <li><strong>[A second finding.]</strong> [One sentence unpacking what it means.]</li>
+                <li><strong>[A third finding.]</strong> [One sentence unpacking what it means.]</li>
+                <li><strong>[A fourth finding, if you have one.]</strong> [One sentence unpacking what it means.]</li>
+            </ul>
+
+            <div style="margin-top:clamp(2rem,5vw,3rem);max-width:52em">
+                <h3>Why it matters theoretically</h3>
+                <p class="muted">[A paragraph connecting your findings to a theory, framework, or body of literature you're drawing on — the concept that explains why this pattern happens.]</p>
+                <p class="muted">[Optional second paragraph — a complication, limitation, or a way your findings push back against a common assumption in the field.]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CURRENT COURSEWORK ============ -->
+    <section class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Current coursework &amp; projects</p>
+                <h2>What I'm reading and writing now</h2>
+            </div>
+
+            <ul class="records">
+                <li>
+                    <span class="records__when">[Term / Year]</span>
+                    <div>
+                        <h3>[Course name — course code]</h3>
+                        <p>[What the course covers and what the final deliverable is.]</p>
+                        <p style="margin-top:.7em"><em>Relevance:</em> [How this connects back to your bigger thesis or argument.]</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="records__when">[Term / Year]</span>
+                    <div>
+                        <h3>[Course, project, or program name]</h3>
+                        <p>[Description and deliverable.]</p>
+                        <p style="margin-top:.7em"><em>Key detail:</em> [A specific person, dataset, or moment that made this work real rather than abstract.]</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="records__when">Current</span>
+                    <div>
+                        <h3>[Internship, job, or ongoing commitment]</h3>
+                        <p>[What you're building the case for or working toward there.]</p>
+                        <p style="margin-top:.7em"><em>Working from:</em> [Specific sources, frameworks, or data you're pulling from.]</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ HONORS & AWARDS ============ -->
+    <section class="section section--paper">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Academic honors &amp; awards</p>
+                <h2>Recognition</h2>
+            </div>
+            <ul class="records">
+                <li>
+                    <span class="records__when">[Date]</span>
+                    <div>
+                        <h3>[Award or honor name]</h3>
+                        <p>[What it was for, and any detail that makes it concrete — a percentile, a selection process, a jury.]</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="records__when">[Date]</span>
+                    <div>
+                        <h3>[Award or honor name]</h3>
+                        <p>[Description, and your specific role if it was a team effort.]</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="records__when">[Date]</span>
+                    <div>
+                        <h3>[Award or honor name]</h3>
+                        <p>[Description.]</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ ACADEMIC CONTACT CTA ============ -->
+    <section class="cta">
+        <div class="wrap">
+            <h2>Academic inquiries</h2>
+            <p>[A line about what kind of contact you welcome — drafts, collaboration, questions about your research.]</p>
+            <div class="cta__actions">
+                <a class="btn btn--light" href="mailto:you@example.com">you@example.com</a>
+                <a class="btn btn--outline-light" href="#" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div>
+                <h4>Samuel Huron</h4>
+                <p class="small">Undergraduate student at UT Austin studying Humanities and Sociology.</p>
+            </div>
+            <div>
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:you@example.com">you@example.com</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Samuel Huron</span>
+            <span>Austin, Texas</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
